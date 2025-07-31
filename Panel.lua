@@ -1,177 +1,155 @@
---== GUI Creation ==--
+-- Services
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local CollectionService = game:GetService("CollectionService")
 
+-- GUI Table
 local G2L = {}
+
+-- ScreenGui
 G2L["ScreenGui_1"] = Instance.new("ScreenGui", LocalPlayer:WaitForChild("PlayerGui"))
 G2L["ScreenGui_1"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 CollectionService:AddTag(G2L["ScreenGui_1"], "main")
 
+-- AdminFrame (your styled frame)
 G2L["AdminFrame_2"] = Instance.new("Frame", G2L["ScreenGui_1"])
-G2L["AdminFrame_2"].BorderSizePixel = 0
-G2L["AdminFrame_2"].BackgroundColor3 = Color3.fromRGB(107, 121, 142)
-G2L["AdminFrame_2"].AnchorPoint = Vector2.new(0.5, 0.5)
-G2L["AdminFrame_2"].Size = UDim2.new(0.5, 0, 0.6, 0)
-G2L["AdminFrame_2"].Position = UDim2.new(0.5, 0, 0.5, 0)
 G2L["AdminFrame_2"].Name = "AdminFrame"
+G2L["AdminFrame_2"].AnchorPoint = Vector2.new(0.5, 0.5)
+G2L["AdminFrame_2"].Size = UDim2.new(0.5235, 0, 0.61995, 0)
+G2L["AdminFrame_2"].Position = UDim2.new(0.5, 0, 0.5, 0)
+G2L["AdminFrame_2"].BackgroundColor3 = Color3.fromRGB(107, 121, 142)
+G2L["AdminFrame_2"].BorderSizePixel = 0
 G2L["AdminFrame_2"].BackgroundTransparency = 0.2
-G2L["AdminFrame_2"].Visible = true -- starts visible
+G2L["AdminFrame_2"].Visible = true
 
+-- TopFrame (title bar)
 G2L["TopFrame_3"] = Instance.new("Frame", G2L["AdminFrame_2"])
-G2L["TopFrame_3"].BorderSizePixel = 0
-G2L["TopFrame_3"].BackgroundColor3 = Color3.fromRGB(114, 148, 165)
-G2L["TopFrame_3"].Size = UDim2.new(1, 0, 0.165, 0)
 G2L["TopFrame_3"].Name = "TopFrame"
+G2L["TopFrame_3"].Size = UDim2.new(1, 0, 0.16522, 0)
+G2L["TopFrame_3"].BackgroundColor3 = Color3.fromRGB(114, 148, 165)
+G2L["TopFrame_3"].BorderSizePixel = 0
 
+-- Title Label
 G2L["Title_4"] = Instance.new("TextLabel", G2L["TopFrame_3"])
-G2L["Title_4"].TextWrapped = true
-G2L["Title_4"].BorderSizePixel = 0
-G2L["Title_4"].TextScaled = true
-G2L["Title_4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Title_4"].TextColor3 = Color3.fromRGB(255, 255, 255)
-G2L["Title_4"].BackgroundTransparency = 1
-G2L["Title_4"].Size = UDim2.new(0.6, 0, 1, 0)
-G2L["Title_4"].Text = "ADMIN PANEL"
-G2L["Title_4"].Font = Enum.Font.GothamBold
 G2L["Title_4"].Name = "Title"
+G2L["Title_4"].Text = "ADMIN PANEL"
+G2L["Title_4"].TextScaled = true
+G2L["Title_4"].BackgroundTransparency = 1
+G2L["Title_4"].TextColor3 = Color3.fromRGB(255,255,255)
+G2L["Title_4"].Font = Enum.Font.Gotham
+G2L["Title_4"].Size = UDim2.new(0.59599, 0, 1, 0)
+G2L["Title_4"].TextWrapped = true
 Instance.new("UIStroke", G2L["Title_4"]).Thickness = 2
 
-G2L["UserBox"] = Instance.new("TextBox", G2L["TopFrame_3"])
-G2L["UserBox"].Name = "UserBox"
-G2L["UserBox"].TextXAlignment = Enum.TextXAlignment.Left
-G2L["UserBox"].PlaceholderColor3 = Color3.fromRGB(97, 97, 97)
-G2L["UserBox"].BorderSizePixel = 0
-G2L["UserBox"].TextSize = 24
-G2L["UserBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
-G2L["UserBox"].BackgroundColor3 = Color3.fromRGB(9, 9, 9)
-G2L["UserBox"].Font = Enum.Font.GothamBold
-G2L["UserBox"].ClearTextOnFocus = false
-G2L["UserBox"].PlaceholderText = "Username.."
-G2L["UserBox"].Size = UDim2.new(0.55, 0, 0.6, 0)
-G2L["UserBox"].Position = UDim2.new(0.025, 0, 1.1, 0)
-G2L["UserBox"].BackgroundTransparency = 0.4
+-- Close 'X' Button
+G2L["CloseButton_6"] = Instance.new("TextButton", G2L["TopFrame_3"])
+G2L["CloseButton_6"].Name = "CloseButton"
+G2L["CloseButton_6"].Text = "X"
+G2L["CloseButton_6"].TextScaled = true
+G2L["CloseButton_6"].BackgroundColor3 = Color3.fromRGB(245, 0, 0)
+G2L["CloseButton_6"].TextColor3 = Color3.fromRGB(255,255,255)
+G2L["CloseButton_6"].BorderSizePixel = 0
+G2L["CloseButton_6"].Size = UDim2.new(0.0745,0,0.63158,0)
+G2L["CloseButton_6"].Position = UDim2.new(0.91117,0,0.18421,0)
+Instance.new("UIStroke", G2L["CloseButton_6"]).Thickness = 1.4
 
--- Close Button
-local CloseButton = Instance.new("TextButton", G2L["TopFrame_3"])
-CloseButton.Name = "CloseButton"
-CloseButton.Text = "X"
-CloseButton.TextScaled = true
-CloseButton.Size = UDim2.new(0.07, 0, 0.6, 0)
-CloseButton.Position = UDim2.new(0.9, 0, 0.2, 0)
-CloseButton.BackgroundColor3 = Color3.fromRGB(245, 0, 0)
-CloseButton.Font = Enum.Font.GothamBold
-CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-Instance.new("UIStroke", CloseButton).Thickness = 1.4
+-- UserBox TextBox
+G2L["UserBox_8"] = Instance.new("TextBox", G2L["TopFrame_3"])
+G2L["UserBox_8"].Name = "UserBox"
+G2L["UserBox_8"].PlaceholderText = "Username.."
+G2L["UserBox_8"].TextSize = 48
+G2L["UserBox_8"].TextColor3 = Color3.fromRGB(255,255,255)
+G2L["UserBox_8"].TextXAlignment = Enum.TextXAlignment.Left
+G2L["UserBox_8"].ClearTextOnFocus = false
+G2L["UserBox_8"].BackgroundColor3 = Color3.fromRGB(9,9,9)
+G2L["UserBox_8"].PlaceholderColor3 = Color3.fromRGB(97,97,97)
+G2L["UserBox_8"].BorderSizePixel = 0
+G2L["UserBox_8"].BackgroundTransparency = 0.4
+G2L["UserBox_8"].Size = UDim2.new(0.55587,0,0.84211,0)
+G2L["UserBox_8"].Position = UDim2.new(0.02006,0,1.18421,0)
+G2L["UserBox_8"].Font = Enum.Font.GothamBold
 
-local function createButton(name, text, positionY)
-	local btn = Instance.new("TextButton", G2L["TopFrame_3"])
-	btn.Name = name
-	btn.Text = text
-	btn.TextSize = 20
-	btn.Size = UDim2.new(0.25, 0, 0.6, 0)
-	btn.Position = UDim2.new(0.025, 0, positionY, 0)
-	btn.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
-	btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	btn.Font = Enum.Font.GothamBold
-	btn.BackgroundTransparency = 0.4
-	return btn
+-- Custom function to create remaining styled buttons
+local function makeBtn(name,text,posY)
+	local b = Instance.new("TextButton", G2L["TopFrame_3"])
+	b.Name = name
+	b.Text = text
+	b.Font = Enum.Font.GothamBold
+	b.TextSize = 60
+	b.TextColor3 = Color3.fromRGB(255,255,255)
+	b.BackgroundColor3 = Color3.fromRGB(8,8,8)
+	b.BackgroundTransparency = 0.4
+	b.BorderSizePixel = 0
+	b.Size = UDim2.new(0.26074,0,0.89474,0)
+	b.Position = UDim2.new(0.02006,0,posY,0)
+	return b
 end
 
--- Buttons
-local SlapButton = createButton("SlapButton", "Slap", 2.3)
-local GotoButton = createButton("GotoButton", "Goto", 3.0)
-local KillButton = createButton("KillButton", "Kill", 3.7)
+-- All action buttons
+local SlapButton = makeBtn("SlapButton","Slap",2.31579)
+local GotoButton = makeBtn("GotoButton","Goto",3.18421)
+local EndButton = makeBtn("EndButton","End",4.57895) -- keep layout if you want
+local ToolsButton = makeBtn("ToolsButton","Tools",5.0)
+local KillButton = makeBtn("KillButton","Kill",4.57895)
+local SlapAuraButton = makeBtn("SlapAuraButton","Aura",5.7)
 
---== Functionality ==--
-
+-- Functionality
 local function findPlayer(input)
-	for _, p in pairs(Players:GetPlayers()) do
-		if p.Name:lower():sub(1, #input) == input:lower() then
+	if not input or input == "" then return nil end
+	for _,p in pairs(Players:GetPlayers()) do
+		if p.Name:lower():sub(1,#input):lower() == input:lower() then
 			return p
 		end
 	end
-	return nil
 end
 
-local function getCharacter(player)
-	return player and player.Character
+local function getChar(p)
+	return p and p.Character
 end
 
-local function equipSlapTool()
-	local backpack = LocalPlayer:FindFirstChild("Backpack")
-	local character = LocalPlayer.Character
-	if backpack and character then
-		local tool = backpack:FindFirstChild("SecretSlap")
-		if tool then
-			tool.Parent = character
-		end
+local function equip()
+	local bp = LocalPlayer.Backpack
+	local char = LocalPlayer.Character
+	if bp and char then
+		local t = bp:FindFirstChild("SecretSlap")
+		if t then t.Parent = char end
 	end
 end
 
-local function fireSlap(targetChar, forceVec)
-	equipSlapTool()
+local function fire(targetChar,force)
+	equip()
 	task.wait(0.1)
-	local success, err = pcall(function()
-		local args = {
-			"slash",
-			targetChar,
-			forceVec
-		}
-		LocalPlayer:WaitForChild("Backpack"):WaitForChild("SecretSlap"):WaitForChild("Event"):FireServer(unpack(args))
+	pcall(function()
+		LocalPlayer.Backpack.SecretSlap.Event:FireServer("slash",targetChar,force)
 	end)
-	if not success then warn("[SLAP ERROR]:", err) end
 end
 
-local function teleportToPlayer(targetChar)
+local function teleport(targetChar)
 	local hrp = targetChar:FindFirstChild("HumanoidRootPart")
-	local myChar = LocalPlayer.Character
-	if hrp and myChar and myChar:FindFirstChild("HumanoidRootPart") then
-		myChar:FindFirstChild("HumanoidRootPart").CFrame = hrp.CFrame + Vector3.new(0, 2, 0)
-	end
+	local me = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+	if hrp and me then me.CFrame = hrp.CFrame + Vector3.new(0,2,0) end
 end
 
--- Button Events
-
+-- Button connections
 SlapButton.MouseButton1Click:Connect(function()
-	local nameInput = G2L["UserBox"].Text
-	local target = findPlayer(nameInput)
-	if target then
-		local char = getCharacter(target)
-		if char then
-			fireSlap(char, Vector3.new(15.397182, -0.0000012, -12.764276))
-		end
-	end
+	local t = findPlayer(G2L["UserBox_8"].Text)
+	if t and getChar(t) then fire(getChar(t), Vector3.new(15.397182, -0.0000012, -12.764276)) end
 end)
-
 KillButton.MouseButton1Click:Connect(function()
-	local nameInput = G2L["UserBox"].Text
-	local target = findPlayer(nameInput)
-	if target then
-		local char = getCharacter(target)
-		if char then
-			fireSlap(char, Vector3.new(math.huge, math.huge, math.huge))
-		end
-	end
+	local t = findPlayer(G2L["UserBox_8"].Text)
+	if t and getChar(t) then fire(getChar(t), Vector3.new(math.huge,math.huge,math.huge)) end
 end)
-
 GotoButton.MouseButton1Click:Connect(function()
-	local nameInput = G2L["UserBox"].Text
-	local target = findPlayer(nameInput)
-	if target then
-		local char = getCharacter(target)
-		if char then
-			teleportToPlayer(char)
-		end
-	end
+	local t = findPlayer(G2L["UserBox_8"].Text)
+	if t and getChar(t) then teleport(getChar(t)) end
 end)
 
--- Close button hides GUI
-CloseButton.MouseButton1Click:Connect(function()
+-- Close button hides frame
+G2L["CloseButton_6"].MouseButton1Click:Connect(function()
 	G2L["AdminFrame_2"].Visible = false
 end)
 
--- Chat command /panel to toggle GUI visibility
+-- Chat /panel toggle
 LocalPlayer.Chatted:Connect(function(msg)
 	if msg:lower() == "/panel" then
 		G2L["AdminFrame_2"].Visible = not G2L["AdminFrame_2"].Visible
