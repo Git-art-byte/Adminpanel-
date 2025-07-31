@@ -1,157 +1,190 @@
--- Services
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
-local CollectionService = game:GetService("CollectionService")
 
--- GUI Table
-local G2L = {}
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AdminPanelGui"
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
--- ScreenGui
-G2L["ScreenGui_1"] = Instance.new("ScreenGui", LocalPlayer:WaitForChild("PlayerGui"))
-G2L["ScreenGui_1"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-CollectionService:AddTag(G2L["ScreenGui_1"], "main")
+-- Main Frame
+local AdminFrame = Instance.new("Frame")
+AdminFrame.Name = "AdminFrame"
+AdminFrame.Size = UDim2.new(0.5235, 0, 0.61995, 0)
+AdminFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+AdminFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+AdminFrame.BackgroundColor3 = Color3.fromRGB(107, 121, 142)
+AdminFrame.BackgroundTransparency = 0.2
+AdminFrame.BorderSizePixel = 0
+AdminFrame.Parent = ScreenGui
 
--- AdminFrame (your styled frame)
-G2L["AdminFrame_2"] = Instance.new("Frame", G2L["ScreenGui_1"])
-G2L["AdminFrame_2"].Name = "AdminFrame"
-G2L["AdminFrame_2"].AnchorPoint = Vector2.new(0.5, 0.5)
-G2L["AdminFrame_2"].Size = UDim2.new(0.5235, 0, 0.61995, 0)
-G2L["AdminFrame_2"].Position = UDim2.new(0.5, 0, 0.5, 0)
-G2L["AdminFrame_2"].BackgroundColor3 = Color3.fromRGB(107, 121, 142)
-G2L["AdminFrame_2"].BorderSizePixel = 0
-G2L["AdminFrame_2"].BackgroundTransparency = 0.2
-G2L["AdminFrame_2"].Visible = true
-
--- TopFrame (title bar)
-G2L["TopFrame_3"] = Instance.new("Frame", G2L["AdminFrame_2"])
-G2L["TopFrame_3"].Name = "TopFrame"
-G2L["TopFrame_3"].Size = UDim2.new(1, 0, 0.16522, 0)
-G2L["TopFrame_3"].BackgroundColor3 = Color3.fromRGB(114, 148, 165)
-G2L["TopFrame_3"].BorderSizePixel = 0
+-- Top Frame (Title bar)
+local TopFrame = Instance.new("Frame")
+TopFrame.Name = "TopFrame"
+TopFrame.Size = UDim2.new(1, 0, 0.16522, 0)
+TopFrame.BackgroundColor3 = Color3.fromRGB(114, 148, 165)
+TopFrame.BorderSizePixel = 0
+TopFrame.Parent = AdminFrame
 
 -- Title Label
-G2L["Title_4"] = Instance.new("TextLabel", G2L["TopFrame_3"])
-G2L["Title_4"].Name = "Title"
-G2L["Title_4"].Text = "ADMIN PANEL"
-G2L["Title_4"].TextScaled = true
-G2L["Title_4"].BackgroundTransparency = 1
-G2L["Title_4"].TextColor3 = Color3.fromRGB(255,255,255)
-G2L["Title_4"].Font = Enum.Font.Gotham
-G2L["Title_4"].Size = UDim2.new(0.59599, 0, 1, 0)
-G2L["Title_4"].TextWrapped = true
-Instance.new("UIStroke", G2L["Title_4"]).Thickness = 2
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Name = "Title"
+TitleLabel.Text = "ADMIN PANEL"
+TitleLabel.TextScaled = true
+TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleLabel.Font = Enum.Font.Gotham
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.Size = UDim2.new(0.596, 0, 1, 0)
+TitleLabel.TextWrapped = true
+TitleLabel.Parent = TopFrame
 
--- Close 'X' Button
-G2L["CloseButton_6"] = Instance.new("TextButton", G2L["TopFrame_3"])
-G2L["CloseButton_6"].Name = "CloseButton"
-G2L["CloseButton_6"].Text = "X"
-G2L["CloseButton_6"].TextScaled = true
-G2L["CloseButton_6"].BackgroundColor3 = Color3.fromRGB(245, 0, 0)
-G2L["CloseButton_6"].TextColor3 = Color3.fromRGB(255,255,255)
-G2L["CloseButton_6"].BorderSizePixel = 0
-G2L["CloseButton_6"].Size = UDim2.new(0.0745,0,0.63158,0)
-G2L["CloseButton_6"].Position = UDim2.new(0.91117,0,0.18421,0)
-Instance.new("UIStroke", G2L["CloseButton_6"]).Thickness = 1.4
+local TitleStroke = Instance.new("UIStroke")
+TitleStroke.Thickness = 2
+TitleStroke.Parent = TitleLabel
 
--- UserBox TextBox
-G2L["UserBox_8"] = Instance.new("TextBox", G2L["TopFrame_3"])
-G2L["UserBox_8"].Name = "UserBox"
-G2L["UserBox_8"].PlaceholderText = "Username.."
-G2L["UserBox_8"].TextSize = 48
-G2L["UserBox_8"].TextColor3 = Color3.fromRGB(255,255,255)
-G2L["UserBox_8"].TextXAlignment = Enum.TextXAlignment.Left
-G2L["UserBox_8"].ClearTextOnFocus = false
-G2L["UserBox_8"].BackgroundColor3 = Color3.fromRGB(9,9,9)
-G2L["UserBox_8"].PlaceholderColor3 = Color3.fromRGB(97,97,97)
-G2L["UserBox_8"].BorderSizePixel = 0
-G2L["UserBox_8"].BackgroundTransparency = 0.4
-G2L["UserBox_8"].Size = UDim2.new(0.55587,0,0.84211,0)
-G2L["UserBox_8"].Position = UDim2.new(0.02006,0,1.18421,0)
-G2L["UserBox_8"].Font = Enum.Font.GothamBold
+-- Close Button
+local CloseButton = Instance.new("TextButton")
+CloseButton.Name = "CloseButton"
+CloseButton.Text = "X"
+CloseButton.TextScaled = true
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.Font = Enum.Font.GothamBold
+CloseButton.BackgroundColor3 = Color3.fromRGB(245, 0, 0)
+CloseButton.BorderSizePixel = 0
+CloseButton.Size = UDim2.new(0.0745, 0, 0.63158, 0)
+CloseButton.Position = UDim2.new(0.91117, 0, 0.18421, 0)
+CloseButton.Parent = TopFrame
 
--- Custom function to create remaining styled buttons
-local function makeBtn(name,text,posY)
-	local b = Instance.new("TextButton", G2L["TopFrame_3"])
-	b.Name = name
-	b.Text = text
-	b.Font = Enum.Font.GothamBold
-	b.TextSize = 60
-	b.TextColor3 = Color3.fromRGB(255,255,255)
-	b.BackgroundColor3 = Color3.fromRGB(8,8,8)
-	b.BackgroundTransparency = 0.4
-	b.BorderSizePixel = 0
-	b.Size = UDim2.new(0.26074,0,0.89474,0)
-	b.Position = UDim2.new(0.02006,0,posY,0)
-	return b
+local CloseStroke = Instance.new("UIStroke")
+CloseStroke.Thickness = 1.4
+CloseStroke.Parent = CloseButton
+
+-- Username TextBox
+local UserBox = Instance.new("TextBox")
+UserBox.Name = "UserBox"
+UserBox.PlaceholderText = "Username.."
+UserBox.TextSize = 48
+UserBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+UserBox.TextXAlignment = Enum.TextXAlignment.Left
+UserBox.ClearTextOnFocus = false
+UserBox.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
+UserBox.PlaceholderColor3 = Color3.fromRGB(97, 97, 97)
+UserBox.BorderSizePixel = 0
+UserBox.BackgroundTransparency = 0.4
+UserBox.Size = UDim2.new(0.55587, 0, 0.84211, 0)
+UserBox.Position = UDim2.new(0.02006, 0, 1.18421, 0)
+UserBox.Font = Enum.Font.GothamBold
+UserBox.Parent = TopFrame
+
+-- Function to create buttons matching your style and position
+local function createButton(name, text, posY)
+	local btn = Instance.new("TextButton")
+	btn.Name = name
+	btn.Text = text
+	btn.Font = Enum.Font.GothamBold
+	btn.TextSize = 60
+	btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	btn.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
+	btn.BackgroundTransparency = 0.4
+	btn.BorderSizePixel = 0
+	btn.Size = UDim2.new(0.26074, 0, 0.89474, 0)
+	btn.Position = UDim2.new(0.02006, 0, posY, 0)
+	btn.Parent = TopFrame
+	return btn
 end
 
--- All action buttons
-local SlapButton = makeBtn("SlapButton","Slap",2.31579)
-local GotoButton = makeBtn("GotoButton","Goto",3.18421)
-local EndButton = makeBtn("EndButton","End",4.57895) -- keep layout if you want
-local ToolsButton = makeBtn("ToolsButton","Tools",5.0)
-local KillButton = makeBtn("KillButton","Kill",4.57895)
-local SlapAuraButton = makeBtn("SlapAuraButton","Aura",5.7)
+-- Create buttons exactly where you placed them
+local SlapButton = createButton("SlapButton", "Slap", 2.31579)
+local GotoButton = createButton("GotoButton", "Goto", 3.18421)
+local EndButton = createButton("EndButton", "End", 4.57895)
+local ToolsButton = createButton("ToolsButton", "Tools", 5.0)
+local KillButton = createButton("KillButton", "Kill", 4.57895)
+local SlapAuraButton = createButton("SlapAuraButton", "Aura", 5.7)
 
--- Functionality
-local function findPlayer(input)
-	if not input or input == "" then return nil end
-	for _,p in pairs(Players:GetPlayers()) do
-		if p.Name:lower():sub(1,#input):lower() == input:lower() then
-			return p
+-- Helper functions
+local function findPlayerByNameStart(text)
+	if not text or text == "" then return nil end
+	text = text:lower()
+	for _, player in pairs(Players:GetPlayers()) do
+		if player.Name:lower():sub(1, #text) == text then
+			return player
+		end
+	end
+	return nil
+end
+
+local function getCharacter(player)
+	return player and player.Character
+end
+
+local function equipSecretSlap()
+	local backpack = LocalPlayer:FindFirstChild("Backpack")
+	local character = LocalPlayer.Character
+	if backpack and character then
+		local tool = backpack:FindFirstChild("SecretSlap")
+		if tool then
+			tool.Parent = character
 		end
 	end
 end
 
-local function getChar(p)
-	return p and p.Character
-end
-
-local function equip()
-	local bp = LocalPlayer.Backpack
-	local char = LocalPlayer.Character
-	if bp and char then
-		local t = bp:FindFirstChild("SecretSlap")
-		if t then t.Parent = char end
-	end
-end
-
-local function fire(targetChar,force)
-	equip()
+local function slapTarget(character, forceVector)
+	equipSecretSlap()
 	task.wait(0.1)
 	pcall(function()
-		LocalPlayer.Backpack.SecretSlap.Event:FireServer("slash",targetChar,force)
+		LocalPlayer.Backpack.SecretSlap.Event:FireServer("slash", character, forceVector)
 	end)
 end
 
-local function teleport(targetChar)
-	local hrp = targetChar:FindFirstChild("HumanoidRootPart")
-	local me = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-	if hrp and me then me.CFrame = hrp.CFrame + Vector3.new(0,2,0) end
+local function teleportToTarget(character)
+	local hrp = character and character:FindFirstChild("HumanoidRootPart")
+	local myHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+	if hrp and myHrp then
+		myHrp.CFrame = hrp.CFrame + Vector3.new(0, 2, 0)
+	end
 end
 
--- Button connections
+-- Connect buttons to functionality
 SlapButton.MouseButton1Click:Connect(function()
-	local t = findPlayer(G2L["UserBox_8"].Text)
-	if t and getChar(t) then fire(getChar(t), Vector3.new(15.397182, -0.0000012, -12.764276)) end
+	local player = findPlayerByNameStart(UserBox.Text)
+	if player then
+		local char = getCharacter(player)
+		if char then
+			local force = Vector3.new(15.39718246459961, -0.000001215329575643409, -12.764276504516602)
+			slapTarget(char, force)
+		end
+	end
 end)
+
 KillButton.MouseButton1Click:Connect(function()
-	local t = findPlayer(G2L["UserBox_8"].Text)
-	if t and getChar(t) then fire(getChar(t), Vector3.new(math.huge,math.huge,math.huge)) end
+	local player = findPlayerByNameStart(UserBox.Text)
+	if player then
+		local char = getCharacter(player)
+		if char then
+			local force = Vector3.new(math.huge, math.huge, math.huge)
+			slapTarget(char, force)
+		end
+	end
 end)
+
 GotoButton.MouseButton1Click:Connect(function()
-	local t = findPlayer(G2L["UserBox_8"].Text)
-	if t and getChar(t) then teleport(getChar(t)) end
+	local player = findPlayerByNameStart(UserBox.Text)
+	if player then
+		local char = getCharacter(player)
+		if char then
+			teleportToTarget(char)
+		end
+	end
 end)
 
--- Close button hides frame
-G2L["CloseButton_6"].MouseButton1Click:Connect(function()
-	G2L["AdminFrame_2"].Visible = false
+-- Close button hides the AdminFrame
+CloseButton.MouseButton1Click:Connect(function()
+	AdminFrame.Visible = false
 end)
 
--- Chat /panel toggle
+-- Chat command to toggle panel
 LocalPlayer.Chatted:Connect(function(msg)
 	if msg:lower() == "/panel" then
-		G2L["AdminFrame_2"].Visible = not G2L["AdminFrame_2"].Visible
+		AdminFrame.Visible = not AdminFrame.Visible
 	end
 end)
